@@ -1,0 +1,84 @@
+﻿<Page x:Class="SystemForAutData.Pages.GeneralPages.InfographicsGeneralPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SystemForAutData.Pages.GeneralPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="800"
+      Title="InfographicsGeneralPage">
+
+    <Grid Style="{StaticResource gridBackgr}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Margin="0 35 0 0" CornerRadius="10" Background="#f2b53a">
+            <DockPanel>
+                <Border Width="80" Height="80" Padding="3" Background="#fcf2de" CornerRadius="100" DockPanel.Dock="Top" Margin="0 -35 0 0">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/Resources/General.jpg"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+
+                <Button Content="Главная" Margin="0 20 0 0" DockPanel.Dock="Top" Click="Go_ToMainGeneralPage"  Style="{StaticResource btnNavigateStyle}"></Button>
+                <Button VerticalAlignment="Top" Content="Мои заявки" Margin="0 15 0 0" DockPanel.Dock="Top" Click="Go_ToMyRequestGeneral" Style="{StaticResource btnNavigateStyle}"></Button>
+                <Button VerticalAlignment="Top" Content="Инфографика" Margin="0 15 0 0" DockPanel.Dock="Top" Style="{StaticResource btnNavigateStyleNow}"></Button>
+                <Button VerticalAlignment="Top" Height="50" Margin="0 15 0 0" DockPanel.Dock="Top" Click="Go_ToControlAndReportGeneralPage" Style="{StaticResource btnNavigateStyle}">
+                    <TextBlock>Контроль и<LineBreak/><TextBlock Margin="5 0 0 0">отчетность</TextBlock></TextBlock>
+                </Button>
+
+            </DockPanel>
+        </Border>
+
+        
+        <Grid Grid.Column="1">
+            <ScrollViewer Grid.Row="1" Margin="0 0 0 0" Name="ScrollViewer1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" Height="520" CanContentScroll="False">
+                <StackPanel>
+                    <TextBlock x:Name="orgTextBlock" TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Style="{StaticResource txtBlckHeadStyle}"></TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel>
+                            <StackPanel Width="200" HorizontalAlignment="Left" Margin="30 30 0 0">
+                                <TextBlock FontSize="16" Style="{StaticResource txtBlckHeadStyle}">Организация:</TextBlock>
+                                <ComboBox x:Name="comboBoxOrganization" VerticalAlignment="Bottom" IsEditable="True" Width="200" Height="30" Margin="0 0 0 0" Style="{StaticResource cmbBoxStyle}" />
+                            </StackPanel>
+                            <StackPanel  Margin="30 20 0 0" HorizontalAlignment="Left" Width="200">
+                                <TextBlock FontSize="16" Style="{StaticResource txtBlckHeadStyle}">Культура:</TextBlock>
+                                <ComboBox x:Name="cultureComboBox" VerticalAlignment="Bottom" IsEditable="True" Width="200" Height="30" Margin="0 0 0 0" Style="{StaticResource cmbBoxStyle}" />
+                            </StackPanel>
+                            <Button Content="Отобразить" Margin="60 30 0 0" HorizontalAlignment="Left" Click="LoadDataForTextBlocks" Style="{StaticResource btnType}"></Button>
+                        </StackPanel>
+                        <StackPanel Margin="100 30 0 0">
+                            <TextBlock FontSize="18" HorizontalAlignment="Center" Style="{StaticResource txtBlckHeadStyle}">Текущая стадия обработки:</TextBlock>
+                            <TextBlock x:Name="stageNow" Margin="0 10 0 20" HorizontalAlignment="Center" FontSize="18" Background="AntiqueWhite" Style="{StaticResource txtBlckHeadStyle}"></TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontSize="18" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource txtBlckHeadStyle}">План:</TextBlock>
+                                <TextBlock x:Name="valueOfStageNow" Margin="10 0 0 0" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="18" Background="AntiqueWhite" Style="{StaticResource txtBlckHeadStyle}"></TextBlock>
+
+                            </StackPanel>
+                            
+                        </StackPanel>
+                        
+                    </StackPanel>
+                    
+                    <StackPanel Height="400" Width="400" Margin="0 30 0 0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <WpfPlot x:Name="PlotStatsAllStage" Height="400" Width="400"/>
+                    </StackPanel>
+                    <StackPanel Height="450" Width="400" Margin="0 30 0 0" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <TextBlock FontSize="18" HorizontalAlignment="Center" Margin="0 0 0 20" Style="{StaticResource txtBlckHeadStyle}">Выполнено на текущей стадии</TextBlock>
+                        <WpfPlot x:Name="PlotPercentPie" Height="400" Width="400"/>
+                    </StackPanel>
+                    <StackPanel Height="400" Width="400" Margin="0 30 0 80" VerticalAlignment="Top" HorizontalAlignment="Center">
+                        <WpfPlot x:Name="PlotStatsInYears" Height="400" Width="400"/>
+                    </StackPanel>
+                </StackPanel>
+                
+            </ScrollViewer>
+        </Grid>
+
+    </Grid>
+</Page>

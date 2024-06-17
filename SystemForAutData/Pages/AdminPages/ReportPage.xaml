@@ -1,0 +1,82 @@
+﻿<Page x:Class="SystemForAutData.Pages.AdminPages.ReportPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:SystemForAutData.Pages.AdminPages"
+      mc:Ignorable="d" 
+      d:DesignHeight="520" d:DesignWidth="800"
+      Title="ReportPage">
+
+    <Grid Style="{StaticResource gridBackgr}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="150"/>
+            <ColumnDefinition Width="*"/>
+
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" Margin="0 35 0 0" CornerRadius="10" Background="#f2b53a">
+            <DockPanel>
+                <Border Width="80" Height="80" Padding="3" Background="#fcf2de" CornerRadius="100" DockPanel.Dock="Top" Margin="0 -35 0 0">
+                    <Ellipse>
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="/Resources/Admin.png"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+
+                <Button Content="Главная" Margin="0 20 0 0" DockPanel.Dock="Top" Click="Go_ToMainAdminPage" Style="{StaticResource btnNavigateStyle}"></Button>
+                <Button VerticalAlignment="Top" Content="Заявки" Margin="0 15 0 0" DockPanel.Dock="Top" Click="Go_ToRequestsOfUsersPage" Style="{StaticResource btnNavigateStyle}"></Button>
+                <Button VerticalAlignment="Top" Content="Пользователи" Margin="0 15 0 0" DockPanel.Dock="Top" Click="Go_ToViewUsersPage" Style="{StaticResource btnNavigateStyle}"></Button>
+                <Button VerticalAlignment="Top" Content="Организации" Margin="0 15 0 0" DockPanel.Dock="Top" Click="Go_ToViewOrgsPage" Style="{StaticResource btnNavigateStyle}"></Button>
+                <Button VerticalAlignment="Top" Height="50" Margin="0 15 0 0" DockPanel.Dock="Top" Click="Go_ToViewCulturesPage" Style="{StaticResource btnNavigateStyle}">
+                    <TextBlock>Посевные<LineBreak/><TextBlock Margin="3 0 0 0">культуры</TextBlock></TextBlock>
+                </Button>
+                <Button VerticalAlignment="Top" Content="Данные" Margin="0 15 0 0" DockPanel.Dock="Top" Click="Go_ToViewDataPage" Style="{StaticResource btnNavigateStyle}"></Button>
+                <Button VerticalAlignment="Top" Content="Отчетность" Margin="0 15 0 0" DockPanel.Dock="Top" Style="{StaticResource btnNavigateStyleNow}"></Button>
+
+            </DockPanel>
+        </Border>
+
+        <Grid Grid.Column="1">
+            <TextBlock TextDecorations="Underline" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10" Style="{StaticResource txtBlckHeadStyle}">Кабинет Администратора</TextBlock>
+            <StackPanel HorizontalAlignment="Center" Margin="0 70 0 0" Orientation="Vertical">
+                <TextBlock Text="Просмотр и экспорт данных" HorizontalAlignment="Center" FontSize="22" Style="{StaticResource txtBlckHeadStyle}"/>
+
+                <StackPanel Orientation="Horizontal" Margin="0 20 10 0">
+
+                    <StackPanel>
+
+                        <DataGrid x:Name="DataGridDataView" Height="200" Width="300" Margin="5 50 0 0" Background="#fcf2de" AutoGenerateColumns="True" ScrollViewer.CanContentScroll="True" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+                            <DataGrid.Columns>
+
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Margin="30 0 0 0">
+                        <Button HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="18" Height="35" Click="Export" Style="{StaticResource btnType}">
+                            <TextBlock TextAlignment="Center">Экспорт</TextBlock>
+                        </Button>
+                        <Border Width="150" BorderBrush="#523a0b" BorderThickness="1" Margin="0 15 0 15"></Border>
+                        <Button Margin="20 0 20 15" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Height="30" Click="ExportDataClick" Style="{StaticResource btnType}">
+                            <TextBlock TextAlignment="Center">Данные</TextBlock>
+                        </Button>
+                        <Button Margin="20 10 20 15" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Height="30" Click="ExportUsersClick" Style="{StaticResource btnType}">
+                            <TextBlock TextAlignment="Center">Пользователи</TextBlock>
+                        </Button>
+                        <Button Margin="20 10 20 15" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Height="30" Click="ExportOrgsClick" Style="{StaticResource btnType}">
+                            <TextBlock TextAlignment="Center">Организации</TextBlock>
+                        </Button>
+                        <Button Margin="20 10 20 15" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Height="30" Click="ExportCulturesClick" Style="{StaticResource btnType}">
+                            <TextBlock TextAlignment="Center">Культуры</TextBlock>
+                        </Button>
+                        <Button Margin="20 10 20 15" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" Height="30" Click="ExportRequestsClick" Style="{StaticResource btnType}">
+                            <TextBlock TextAlignment="Center">Заявки</TextBlock>
+                        </Button>
+                    </StackPanel>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+
+    </Grid>
+</Page>
